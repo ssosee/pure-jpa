@@ -21,9 +21,9 @@ repositories {
 dependencies {
     //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     //implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.hibernate:hibernate-entitymanager'
+    implementation 'org.hibernate:hibernate-entitymanager:5.3.10.Final'
     // https://mvnrepository.com/artifact/com.h2database/h2
-    implementation 'com.h2database:h2'
+    implementation 'com.h2database:h2:1.4.200'
 
 
     compileOnly 'org.projectlombok:lombok'
