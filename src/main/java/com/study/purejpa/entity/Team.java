@@ -7,12 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-// 유니크 제약 조건 추가
-@Table(uniqueConstraints =
-        {@UniqueConstraint(
-                name = "NAME_AGE_UNIQUE",
-                columnNames = {"NAME", "AGE"}
-        )})
 public class Team {
 
     @Id
