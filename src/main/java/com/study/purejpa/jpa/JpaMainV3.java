@@ -1,9 +1,7 @@
 package com.study.purejpa.jpa;
 
 import com.study.purejpa.entity.Member;
-import com.study.purejpa.entity.RoleType;
 import com.study.purejpa.entity.Team;
-import com.study.purejpa.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,13 +18,27 @@ public class JpaMainV3 {
         tx.begin();
 
         try {
-            User user1 = new User();
-            user1.setName("노홍철");
-            user1.setRoleType(RoleType.USER);
 
-            System.out.println("persist 전");
-            em.persist(user1);
-            System.out.println("persist 후");
+            // 팀 저장
+            Team team = new Team();
+            team.setName("SK T1");
+            em.persist(team);
+
+            // 회원 저장
+            Member member = new Member();
+            member.setName("Faker");
+
+            // 연관관계 설정
+            member.changeTeam(team);
+
+            em.persist(member);
+
+            // 1차 캐시
+            Team findTeam = em.find(Team.class, team.getId());
+            for (Member m : findTeam.getMembers()) {
+                // 값이 없음
+                System.out.println("m="+m.getName());
+            }
 
             tx.commit(); // 커밋
         } catch (Exception e) {

@@ -8,19 +8,30 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 public class Member {
-    @Id // PK
+    @Id @GeneratedValue
     private Long id;
+    @Column(name = "username")
     private String name;
+    /**
+     * 다대일 관계
+     * 여러명의 회원은 하나의 팀에 소속 될 수 있음
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
-    public Member() {
+    // 연관관계 편의 메소드
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
     }
 
-    public Member(Long id, String name, Team team) {
-        this.id = id;
-        this.name = name;
-        this.team = team;
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", team=" + team +
+                '}';
     }
 }
