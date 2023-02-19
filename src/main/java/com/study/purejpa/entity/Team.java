@@ -17,18 +17,10 @@ public class Team {
     private Long id;
     private String name;
     /**
-     * 일대다 관계
-     * 하나의 팀에 여러명의 회원이 있음
+     * 일대다 단방향 매핑
+     * 외래키를 Team에서 관리
      */
-    @OneToMany(mappedBy = "team")
+    @OneToMany
+    @JoinColumn(name = "team_id")
     private List<Member> members = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return "Team{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", members=" + members +
-                '}';
-    }
 }

@@ -9,9 +9,9 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member {
-    @Id @GeneratedValue
+public class Product {
+    @Id
+    @GeneratedValue
     private Long id;
-    @Column(name = "username")
     private String name;
 }

@@ -5,7 +5,9 @@
     <persistence-unit name="pureJpa">
         <class>com.study.purejpa.entity.Member</class>
         <class>com.study.purejpa.entity.Team</class>
-        <class>com.study.purejpa.entity.User</class>
+        <class>com.study.purejpa.entity.Locker</class>
+        <class>com.study.purejpa.entity.Product</class>
+        <class>com.study.purejpa.entity.Order</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

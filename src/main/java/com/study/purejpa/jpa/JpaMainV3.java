@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMainV3 {
     public static void main(String[] args) {
@@ -19,26 +20,15 @@ public class JpaMainV3 {
 
         try {
 
-            // 팀 저장
-            Team team = new Team();
-            team.setName("SK T1");
-            em.persist(team);
-
             // 회원 저장
-            Member member = new Member();
-            member.setName("Faker");
+            Member member1 = new Member();
+            member1.setName("페이커");
+            em.persist(member1);
 
-            // 연관관계 설정
-            member.changeTeam(team);
-
-            em.persist(member);
-
-            // 1차 캐시
-            Team findTeam = em.find(Team.class, team.getId());
-            for (Member m : findTeam.getMembers()) {
-                // 값이 없음
-                System.out.println("m="+m.getName());
-            }
+            // 팀 저장
+            Team team1 = new Team();
+            team1.setName("SK T1");
+            em.persist(team1);
 
             tx.commit(); // 커밋
         } catch (Exception e) {
