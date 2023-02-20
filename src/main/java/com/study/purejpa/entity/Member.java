@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Setter @Getter
-public class Member {
+public class Member extends BaseTimeEntity {
     @Id @GeneratedValue
     private Long id;
     private String name;
