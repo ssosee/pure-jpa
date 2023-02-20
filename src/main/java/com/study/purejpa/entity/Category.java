@@ -1,5 +1,6 @@
 package com.study.purejpa.entity;
 
+import com.study.purejpa.entity.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
