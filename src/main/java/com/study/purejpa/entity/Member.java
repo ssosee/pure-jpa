@@ -3,15 +3,17 @@ package com.study.purejpa.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-@Getter @Setter
+@Setter @Getter
 public class Member {
     @Id @GeneratedValue
     private Long id;
-    @Column(name = "username")
     private String name;
+    private String city;
+    private String street;
+    private String zipcode;
 }

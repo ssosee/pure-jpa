@@ -1,16 +1,21 @@
 package com.study.purejpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Setter @Getter
 public class OrderItem {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private Long id;
-    private Long orderId;
-    private Long itemId;
-    private Integer orderPrice;
-    private Integer count;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

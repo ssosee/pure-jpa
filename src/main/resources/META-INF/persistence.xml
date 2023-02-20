@@ -4,10 +4,11 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="pureJpa">
         <class>com.study.purejpa.entity.Member</class>
-        <class>com.study.purejpa.entity.Team</class>
-        <class>com.study.purejpa.entity.Locker</class>
-        <class>com.study.purejpa.entity.Product</class>
         <class>com.study.purejpa.entity.Order</class>
+        <class>com.study.purejpa.entity.Delivery</class>
+        <class>com.study.purejpa.entity.OrderItem</class>
+        <class>com.study.purejpa.entity.Category</class>
+        <class>com.study.purejpa.entity.Item</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
