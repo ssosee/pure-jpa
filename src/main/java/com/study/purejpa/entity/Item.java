@@ -12,7 +12,7 @@ import java.util.List;
 // 조인 전략
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
-public abstract class Item {
+public abstract class Item extends BaseEntity {
     @Id @GeneratedValue
     private Long id;
     private String name;

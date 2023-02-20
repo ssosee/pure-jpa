@@ -9,6 +9,9 @@
         <class>com.study.purejpa.entity.OrderItem</class>
         <class>com.study.purejpa.entity.Category</class>
         <class>com.study.purejpa.entity.Item</class>
+        <class>com.study.purejpa.entity.Book</class>
+        <class>com.study.purejpa.entity.Album</class>
+        <class>com.study.purejpa.entity.Movie</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
