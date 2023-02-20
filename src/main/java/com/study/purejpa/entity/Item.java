@@ -9,7 +9,10 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Item {
+// 조인 전략
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
+public abstract class Item {
     @Id @GeneratedValue
     private Long id;
     private String name;
