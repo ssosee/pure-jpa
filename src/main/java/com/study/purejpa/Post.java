@@ -14,7 +14,7 @@ public class Post {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
     private List<File> files = new ArrayList<>();
 
     public void changePost(File file) {

@@ -25,11 +25,11 @@ public class Order extends BaseTimeEntity {
      * 일대일 관계는 외래 키를 양쪽 어디에나 매핑 가능
      * order에 외래 키를 두면 성능(바로 확인 가능, 프록시), 객체 입장에서 편함
      */
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
     // 연관관계 주인 필드를 선택
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 }

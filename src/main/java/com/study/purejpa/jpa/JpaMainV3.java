@@ -33,16 +33,15 @@ public class JpaMainV3 {
             post.changePost(file2);
 
             em.persist(post);
-//            em.persist(file1);
-//            em.persist(file2);
+            em.persist(file1);
+            em.persist(file2);
 
             em.flush();
             em.clear();
 
-            // 부모 엔티티 삭제
             Post findPost = em.find(Post.class, post.getId());
-//            em.remove(findPost);
             findPost.getFiles().remove(0);
+
             tx.commit();
 
         } catch (Exception e) {
