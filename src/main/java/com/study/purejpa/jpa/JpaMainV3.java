@@ -1,7 +1,9 @@
 package com.study.purejpa.jpa;
 
+import com.study.purejpa.Address;
 import com.study.purejpa.File;
 import com.study.purejpa.Post;
+import com.study.purejpa.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,28 +21,29 @@ public class JpaMainV3 {
         try {
             tx.begin();
 
-            File file1 = new File();
-            file1.setName("둘리");
-            file1.setPath("/image/둘리.png");
+            Address address1 = new Address("서울시",
+                    "광장시장로",
+                    "110",
+                    "신영상가 3층");
 
-            File file2 = new File();
-            file2.setName("도우너");
-            file2.setPath("/image/도우너.png");
+            User user1 = new User();
+            user1.setName("민혁이");
+            user1.setHomeAddress(address1);
+            em.persist(user1);
 
-            Post post = new Post();
-            post.setName("아기공룡 둘리");
-            post.changePost(file1);
-            post.changePost(file2);
+            /**
+             * address1의 값을 변경하고
+             * 싶으면 새로운 address2를 만들어야함
+             */
+            Address address2 = new Address(address1.getCity(),
+                    address1.getStreet(),
+                    address1.getZipcode(),
+                    "민혁상가 2층");
 
-            em.persist(post);
-            em.persist(file1);
-            em.persist(file2);
-
-            em.flush();
-            em.clear();
-
-            Post findPost = em.find(Post.class, post.getId());
-            findPost.getFiles().remove(0);
+            User user2 = new User();
+            user2.setName("용준이");
+            user2.setHomeAddress(address2);
+            em.persist(user2);
 
             tx.commit();
 
