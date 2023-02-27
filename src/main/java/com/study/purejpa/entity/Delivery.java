@@ -10,9 +10,8 @@ import javax.persistence.*;
 public class Delivery {
     @Id @GeneratedValue
     private Long id;
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
     /**
      * status를 enum 타입으로 설정
      */

@@ -1,14 +1,15 @@
 package com.study.purejpa.jpa;
 
-import com.study.purejpa.Address;
-import com.study.purejpa.File;
-import com.study.purejpa.Post;
-import com.study.purejpa.User;
+import com.study.purejpa.*;
+import com.study.purejpa.entity.Member;
+import com.study.purejpa.entity.Address;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
+import java.util.Set;
 
 public class JpaMainV3 {
     public static void main(String[] args) {
@@ -21,29 +22,10 @@ public class JpaMainV3 {
         try {
             tx.begin();
 
-            Address address1 = new Address("서울시",
-                    "광장시장로",
-                    "110",
-                    "신영상가 3층");
+            List<Member> result = em.createQuery("select m from Member m" +
+                            " where m.age >= 20", Member.class)
+                            .getResultList();
 
-            User user1 = new User();
-            user1.setName("민혁이");
-            user1.setHomeAddress(address1);
-            em.persist(user1);
-
-            /**
-             * address1의 값을 변경하고
-             * 싶으면 새로운 address2를 만들어야함
-             */
-            Address address2 = new Address(address1.getCity(),
-                    address1.getStreet(),
-                    address1.getZipcode(),
-                    "민혁상가 2층");
-
-            User user2 = new User();
-            user2.setName("용준이");
-            user2.setHomeAddress(address2);
-            em.persist(user2);
 
             tx.commit();
 

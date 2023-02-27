@@ -13,10 +13,10 @@
         <class>com.study.purejpa.entity.item.Movie</class>
         <class>com.study.purejpa.entity.item.Book</class>
         <class>com.study.purejpa.entity.TestEntity</class>
-        <class>com.study.purejpa.File</class>
-        <class>com.study.purejpa.Post</class>
-        <class>com.study.purejpa.User</class>
-        <class>com.study.purejpa.Address</class>
+<!--        <class>com.study.purejpa.File</class>-->
+<!--        <class>com.study.purejpa.Post</class>-->
+<!--        <class>com.study.purejpa.User</class>-->
+<!--        <class>com.study.purejpa.AddressEntity</class>-->
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
