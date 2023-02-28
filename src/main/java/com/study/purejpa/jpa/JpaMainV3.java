@@ -1,15 +1,14 @@
 package com.study.purejpa.jpa;
 
-import com.study.purejpa.*;
-import com.study.purejpa.entity.Member;
-import com.study.purejpa.entity.Address;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import com.study.purejpa.jpql.Address;
+import com.study.purejpa.jpql.Member;
+import com.study.purejpa.jpql.MemberDto;
+import com.study.purejpa.jpql.Team;
+
+import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 
 public class JpaMainV3 {
     public static void main(String[] args) {
@@ -22,10 +21,25 @@ public class JpaMainV3 {
         try {
             tx.begin();
 
-            List<Member> result = em.createQuery("select m from Member m" +
-                            " where m.age >= 20", Member.class)
-                            .getResultList();
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
+            Member member = new Member();
+            member.setUsername("춘식이");
+            member.setAge(3);
+            member.setAddress(new Address("화성시", "화성로", "942"));
+            member.changeTeam(team);
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            String sql = "select m.username, 'hello', true from Member m" +
+                    " where m.age = 10 and TYPE(m) = Member ";
+            //String sql = "select m from Member m where exists (select t from Team t where t.name = 'teamA')";
+            List<Member> result = em.createQuery(sql, Member.class)
+                    .getResultList();
 
             tx.commit();
 
